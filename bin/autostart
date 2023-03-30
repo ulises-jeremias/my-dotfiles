@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+XDG_CONFIG_HOME="${HOME}"/.config
+export XDG_CONFIG_HOME
+
+[[ "${PATH}" == *"${HOME}/.local/bin"* ]] || export PATH="${HOME}/.local/bin:${PATH}"
+
+# required for xfce settings to work
+xfsettingsd &
+
+# load X params required for dotfiles to work
+xrdb -I"${HOME}" -load ~/.Xresources &
+
+# load picom
+picom --config "${XDG_CONFIG_HOME}"/picom.conf &
+
+# @todo: load git notify pointing to dotfiles repo
+
+# restore last configured wallpaper and colors
+dots-scripts wall-d -f -r &
+wal -R -q
+dots-scripts feh-blur --blur 10 -d &
+
+# open polybar
+"${XDG_CONFIG_HOME}"/polybar/launch &
+
+# TLP starts in AC mode (auto) to save battery power
+tlp start &
+
+# Start greenclip daemon
+greenclip daemon &
+
+# Start Emacs Server
+emacs --daemon
