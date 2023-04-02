@@ -32,3 +32,8 @@ greenclip daemon &
 
 # Start Emacs Server
 emacs --daemon
+
+# Start nm-applet
+if type -p nm-applet &>/dev/null; then
+    nm-applet &
+fi
