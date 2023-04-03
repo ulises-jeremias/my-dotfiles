@@ -5,6 +5,11 @@ export XDG_CONFIG_HOME
 
 [[ "${PATH}" == *"${HOME}/.local/bin"* ]] || export PATH="${HOME}/.local/bin:${PATH}"
 
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+gnome-keyring-daemon --start --components=pkcs11 &
+xset dpms 600 900 1200
+xset r rate 350 60
+
 # required for xfce settings to work
 xfsettingsd &
 
@@ -14,8 +19,6 @@ xrdb -I"${HOME}" -load ~/.Xresources &
 # load picom
 picom --config "${XDG_CONFIG_HOME}"/picom.conf &
 
-# @todo: load git notify pointing to dotfiles repo
-
 # restore last configured wallpaper and colors
 dots-scripts wall-d -f -r &
 wal -R -q
@@ -24,16 +27,8 @@ dots-scripts feh-blur --blur 10 -d &
 # open polybar
 "${XDG_CONFIG_HOME}"/polybar/launch &
 
-# TLP starts in AC mode (auto) to save battery power
-tlp start &
-
 # Start greenclip daemon
 greenclip daemon &
 
-# Start Emacs Server
-emacs --daemon
-
 # Start nm-applet
-if type -p nm-applet &>/dev/null; then
-    nm-applet &
-fi
+nm-applet &
