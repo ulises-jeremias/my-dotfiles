@@ -14,10 +14,14 @@ cd /tmp/dotfiles
 sudo ./install
 ```
 
-### Installation
+### Install dependencies
 
 ```sh
-git clone https://github.com/ulises-jeremias/my-dotfiles.git ~/dotfiles
-cd ~/dotfiles
+cd <path-to-this-repository>
+./install-deps
+```
+
+```sh
+cd <path-to-this-repository>
 ./install
 ```
