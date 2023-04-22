@@ -17,4 +17,6 @@ GOPATH="$HOME/go"
 GOROOT="$HOME/.go"
 PATH="$GOPATH/bin:$PATH"
 
+eval "$(direnv hook zsh)"
+
 export LD_LIBRARY_PATH PATH GOPATH GOROOT
