@@ -13,9 +13,7 @@ PATH="$HOME/.fnm:$PATH"
 eval "$(fnm env)"
 
 # Golang
-GOPATH="$HOME/go"
-GOROOT="$HOME/.go"
-PATH="$GOPATH/bin:$PATH"
+PATH="$PATH:$(go env GOBIN):$(go env GOPATH)/bin"
 
 eval "$(direnv hook zsh)"
 
