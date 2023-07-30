@@ -3,3 +3,11 @@
 #window {
     padding             : 76 136;
 }
+
+#inputbar {
+    border-radius       : 16;
+}
+
+#element-icon {
+    size                : 6em;
+}
