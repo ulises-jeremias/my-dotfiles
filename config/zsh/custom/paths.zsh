@@ -9,7 +9,7 @@ LD_LIBRARY_PATH="/usr/local/lib:/usr/lib:${LD_LIBRARY_PATH}"
 
 # yarn and fnm
 PATH="$(yarn global bin):$PATH"
-PATH="$HOME/.fnm:$PATH"
+PATH="$HOME/.local/share/fnm:$HOME/.fnm:$PATH"
 eval "$(fnm env)"
 
 # Golang
